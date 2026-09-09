@@ -1,0 +1,47 @@
+{
+  "name": "chromadoku",
+  "productName": "Chromadoku",
+  "version": "1.1.0",
+  "description": "Chromadoku — a color sudoku game by Kevin MacLeod.",
+  "author": "Kevin MacLeod",
+  "license": "CC0-1.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win",
+    "dist:linux": "electron-builder --linux"
+  },
+  "devDependencies": {
+    "electron": "^32.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "academy.danger.chromadoku",
+    "productName": "Chromadoku",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.puzzle-games",
+      "target": [
+        { "target": "dmg", "arch": ["arm64", "x64"] },
+        { "target": "zip", "arch": ["arm64", "x64"] }
+      ]
+    },
+    "win": {
+      "target": ["nsis", "portable"]
+    },
+    "linux": {
+      "target": ["AppImage"],
+      "category": "Game"
+    }
+  }
+}
